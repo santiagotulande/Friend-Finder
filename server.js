@@ -11,7 +11,7 @@ var PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Add middleware for parsing incoming request bodies
+
 
 // Add the application routes
 require(path.join(__dirname, './app/routing/apiRoutes'))(app);
