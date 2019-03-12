@@ -1,8 +1,8 @@
 // Pull in required dependencies
 var path = require('path');
 
-// Import the list of friend entries
-var friends = require('../data/friends.js');
+// Import the list of friend from friends.js
+var friendslist = require('../data/friends.js');
 
 // Export API routes
 module.exports = function(app) {
@@ -10,50 +10,47 @@ module.exports = function(app) {
 
 	// link to list of friend.js
 	app.get('/api/friends', function(req, res) {
-		res.json(friends);
+		res.json(friendslist);
 	});
 
 	// Add new to friend.js
 	app.post('/api/friends', function(req, res) {
 		
 		var userInput = req.body;
-		// console.log('userInput = ' + JSON.stringify(userInput));
+		
 
 		var userResponses = userInput.scores;
-		// console.log('userResponses = ' + userResponses);
+		
 
-		// Compute best friend match
+		
 		var matchName = '';
 		var matchImage = '';
-		var totalDifference = 10000; // Make the initial value big for comparison
+		var totalDifference = 50; 
 
-		// Examine all existing friends in the list
-		for (var i = 0; i < friends.length; i++) {
-			// console.log('friend = ' + JSON.stringify(friends[i]));
-
+		// loop the list
+		for (var i = 0; i < friendslist.length; i++) {
+			
 			// Compute differenes for each question
 			var diff = 0;
 			for (var j = 0; j < userResponses.length; j++) {
-				diff += Math.abs(friends[i].scores[j] - userResponses[j]);
+				diff += Math.abs(friendslist[i].scores[j] - userResponses[j]);
 			}
-			// console.log('diff = ' + diff);
+		
 
 			// If lowest difference, record the friend match
 			if (diff < totalDifference) {
-				// console.log('Closest match found = ' + diff);
-				// console.log('Friend name = ' + friends[i].name);
-				// console.log('Friend image = ' + friends[i].photo);
+				
 
 				totalDifference = diff;
-				matchName = friends[i].name;
-				matchImage = friends[i].photo;
+				matchName = friendslist[i].name;
+				matchImage = friendslist[i].photo;
 			}
 		}
 
 		// Add new user
-		friends.push(userInput);
+		friendslist.push(userInput);
 
-		// Send appropriate response
-		res.json({status: 'OK', matchName: matchName, matchImage: matchImage});
+		// Send response
+		res.json({status: 'Matched', matchName: matchName, matchImage: matchImage});
 	});
 };
