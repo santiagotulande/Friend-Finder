@@ -6,16 +6,16 @@ var friends = require('../data/friends.js');
 
 // Export API routes
 module.exports = function(app) {
-	// console.log('___ENTER apiRoutes.js___');
+	
 
-	// Total list of friend entries
+	// link to list of friend.js
 	app.get('/api/friends', function(req, res) {
 		res.json(friends);
 	});
 
-	// Add new friend entry
+	// Add new to friend.js
 	app.post('/api/friends', function(req, res) {
-		// Capture the user input object
+		
 		var userInput = req.body;
 		// console.log('userInput = ' + JSON.stringify(userInput));
 
