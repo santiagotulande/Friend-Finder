@@ -197,15 +197,26 @@ var currentURL = window.location.origin;
 $("#submit").on("click", function(){
   //event.preventDefault();
     if( ($('#name').val().trim() !== "") && ($('#photo').val().trim() !== "") ) {
-        // Create an object for the user's data
+        //object for the user's data
         var userData = {
             name: $("#name").val(),
             photo: $("#photo").val(),
-            scores: [$("#score1").val(), $("#score2").val(), $("#score3").val(), $("#score4").val(), $("#score5").val(), $("#score6").val(), $("#score7").val(), $("#score8").val(), $("#score9").val(), $("#score10").val(), ]
+            scores: [
+             $("#score1").val(),
+             $("#score2").val(), 
+             $("#score3").val(), 
+             $("#score4").val(), 
+             $("#score5").val(), 
+             $("#score6").val(), 
+             $("#score7").val(), 
+             $("#score8").val(), 
+             $("#score9").val(),
+             $("#score10").val(), 
+            ]
         }
-        // AJAX post the data to the friends API.
+        // AJAX post the data to the friends.js array.
         $.post(currentURL + "/api/friends", userData, function(data){
-          // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+          
           $("#matchName").text(data.name);
           $('#matchImg').attr("src", data.photo);
           // Show the modal with the best match
