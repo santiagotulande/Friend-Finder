@@ -3,7 +3,7 @@
 var friendsArray = [
 	{
 		name: 'scooby doo',
-		photo: 'http://cdn3-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-15.jpg',
+		photo: '',
 		scores: [
 			'1',
 			'5',
@@ -19,7 +19,7 @@ var friendsArray = [
 	},
 	{
 		name: 'gardfield',
-		photo: 'https://i.ytimg.com/vi/mRf3-JkwqfU/hqdefault.jpg',
+		photo: '',
 		scores: [
 			'2',
 			'4',
