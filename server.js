@@ -1,4 +1,4 @@
-// Pull in required dependencies
+
 var express = require('express');
 var path = require('path');
 
@@ -13,11 +13,10 @@ app.use(express.json());
 
 
 
-// Add the application routes
+//application routes
 require(path.join(__dirname, './app/routing/apiRoutes'))(app);
 require(path.join(__dirname, './app/routing/htmlRoutes'))(app);
 
-// Start listening on PORT
 
   app.listen(PORT, function() {
     console.log("App listening on localhost:" + PORT);
